@@ -6,17 +6,21 @@ import autoprefixer from 'autoprefixer'
 export default defineConfig(() => {
   return {
     base: './',
+    
     build: {
-      outDir: 'build',
+      outDir: 'dist',   // 🔥 IMPORTANT FIX
     },
+
     css: {
       postcss: {
         plugins: [
-          autoprefixer({}), // add options if needed
+          autoprefixer({}),
         ],
       },
     },
+
     plugins: [react()],
+
     resolve: {
       alias: [
         {
@@ -26,11 +30,10 @@ export default defineConfig(() => {
       ],
       extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.scss'],
     },
+
     server: {
       port: 3000,
-      proxy: {
-        // https://vitejs.dev/config/server-options.html
-      },
+      proxy: {},
     },
   }
 })
